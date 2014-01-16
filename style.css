@@ -1,24 +1,24 @@
-body{
-color: green;
-font-family: Arial, Helvetica, sans-serif;
-font-size: : 14px;
-margin: 0;
-padding: 5px;
-background-image:url('img/hexellence_@2X.png');
+body {
+ color: green;
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 14px;
+ margin: 0;
+ padding: 5px;
+ background-image:url('img/hexellence_@2X.png');
 }
 
-h1{
-font-size: 50px;
-text-align: center;
+h1 {
+ font-size: 50px;
+ text-align: center;
 }
 
-h2{
-color: purple;
-font-size: 20px;
+h2 {
+ color: purple;
+ font-size: 20px;
 }
 
-.links{
-color: purple;
-font-size: 20px;
-font-weight: bold;
+.links {
+ color: purple;
+ font-size: 20px;
+ font-weight: bold;
 }
