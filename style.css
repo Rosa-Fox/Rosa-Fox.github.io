@@ -1,58 +1,47 @@
 body {
- color: green;
- font-family: Arial, Helvetica, sans-serif;
- font-size: 14px;
- margin: 0;
- padding: 20px;
- background-color: white;
- background-image:url('img/hexellence_@2X.png');
+	color: green;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	margin: 0;
+	padding: 20px;
+	background-color: white;
+	background-image:url('img/hexellence_@2X.png');
 }
 
 .container {
- margin: 0 auto;
- width: 900px;
- background-color: white;
- overflow:hidden;
-}
-
-.content-container {
-	padding: 0px;
-	float: left;
-	width: 600px;
+	margin: 0 auto;
+	width: 900px;
+	background-color: white;
+	overflow:hidden;
 }
 
 .content {
 	padding: 10px;
 }
 
-header{
- color: #009B18;
- height: 150px;
- border-radius: 35px;
- font-size: 60px;
- text-align: center;
- background-color: white;
+header {
+ 	color: #009B18;
+ 	height: 150px;
+ 	border-radius: 35px;
+ 	font-size: 60px;
+ 	text-align: center;
+ 	background-color: white;
 }
 
-
 h1 {
- font-size: 50px;
- text-align: center;
- color: #E80C3D;
- text-decoration: underline;
+	font-size: 50px;
+	text-align: center;
+	color: #E80C3D;
+	text-decoration: underline;
 }
 
 h2 {
- color: purple;
- font-size: 20px;
+	color: purple;
+	font-size: 20px;
 }
 
 .links {
- color: purple;
- font-size: 20px;
- font-weight: bold;
-}
-
-.boiledeggimg {
-	float: left;
+	color: purple;
+	font-size: 20px;
+	font-weight: bold;
 }
