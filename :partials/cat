@@ -1,0 +1,7 @@
+#! /usr/bin/env ruby
+
+ARGV.each do |arg|
+  File.readlines(arg).each do |line|
+    puts line
+  end
+end
