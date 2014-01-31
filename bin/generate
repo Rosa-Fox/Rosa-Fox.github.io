@@ -1,0 +1,4 @@
+#! /usr/bin/env ruby
+
+require 'FileUtils'
+FileUtils.rm Dir.glob('/Users/Fox/Desktop/HappyBearSoftware/PersonalSite/Rosa-Fox.github.io/public/*')
