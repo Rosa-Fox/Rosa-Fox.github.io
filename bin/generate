@@ -2,3 +2,9 @@
 
 require 'FileUtils'
 FileUtils.rm Dir.glob('public/*')
+
+
+input = File.open('style.css') {|f| f.read() }
+
+output = File.open('public/style.css', 'w') {|f| f.write(input) }
+
