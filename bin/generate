@@ -1,10 +1,13 @@
 #! /usr/bin/env ruby
-
+#deletes all existing files is the public directory
 require 'FileUtils'
 FileUtils.rm Dir.glob('public/*')
 
-
+#Copy the style.css directory into the public directory
 input = File.open('style.css') {|f| f.read() }
 
 output = File.open('public/style.css', 'w') {|f| f.write(input) }
+
+#Copy the img directory into the public directory
+FileUtils.cp_r 'img', 'public' 
 
