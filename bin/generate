@@ -10,4 +10,15 @@ FileUtils.cp 'style.css', 'public/style.css'
 #Copy the img directory into the public directory
 FileUtils.cp_r 'img', 'public' 
 
+#Copy all of the files from content into public
+FileUtils.cp_r(Dir.glob('content/*'), 'public')
 
+#Writes the contents of header.html into the articles and index.html 
+Dir['public/*html'].each do |a|
+
+	input = File.open('partials/header.html') {|f| f.read() }
+
+	File.open(a, 'w')  {|f| f.write(input) }
+	
+end
+ 
