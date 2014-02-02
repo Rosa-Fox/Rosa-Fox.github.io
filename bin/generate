@@ -10,15 +10,43 @@ FileUtils.cp 'style.css', 'public/style.css'
 #Copy the img directory into the public directory
 FileUtils.cp_r 'img', 'public' 
 
-#Copy all of the files from content into public
+#Copy all of the files from content into public, this means we will have the documents there which can then be over written with contents of header.html and footer.html and the article
 FileUtils.cp_r(Dir.glob('content/*'), 'public')
 
-#Writes the contents of header.html into the articles and index.html 
+#Writes the contents of header.html, index.html and the artcicles into the html files in the public folder
 Dir['public/*html'].each do |a|
 
-	input = File.open('partials/header.html') {|f| f.read() }
+  #Opens the header.html file and copies its contents into all the files in the public directory with the file extension .html
+  input = File.open('partials/header.html') {|f| f.read() }
 
-	File.open(a, 'w')  {|f| f.write(input) }
-	
+  File.open(a, 'w')  {|f| f.write(input) }
+    
+    #Opens html file and copies to the relevant file in the public folder
+  input1 = File.open('content/how_to_boil_an_egg.html') {|f| f.read() }
+    
+    #Opens html file and copies to the relevant file in the public folder
+  File.open('public/how_to_boil_an_egg.html', 'w') {|f| f.write(input1) }
+
+  input2 = File.open('content/make_cupcakes.html') {|f| f.read() }
+
+    #Opens html file and copies to the relevant file in the public folder
+  File.open('public/make_cupcakes.html', 'w') {|f| f.write(input2) }
+
+  input3 = File.open('content/make_pancakes.html') {|f| f.read() }
+ 
+    #Opens html file and copies to the relevant file in the public folder
+  File.open('public/make_pancakes.html', 'w') {|f| f.write(input3) }
+
+  input4 = File.open('content/index.html') {|f| f.read() }
+
+  File.open('public/index.html', 'w') {|f| f.write(input4) }
+
+    #Attempts to open the header.html file and copy it's contents into all files that have a .html extension in the public directory but does not work
+  input5 = File.open('partials/footer.html') {|f| f.read() }
+
+  File.open(a, 'w')  {|f| f.write(input5) }
+
 end
+
+
  
