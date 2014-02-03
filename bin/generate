@@ -4,7 +4,7 @@
 
 require 'FileUtils'
 #deletes all existing files in the public directory
-FileUtils.rm Dir.glob('public/*')
+FileUtils.rm_rf Dir.glob('public/*')
 
 #Copy the style.css directory into the public directory
 FileUtils.cp 'style.css', 'public/style.css'
