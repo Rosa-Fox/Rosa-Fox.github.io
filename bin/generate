@@ -1,7 +1,5 @@
 #! /usr/bin/env ruby
 
-#! /usr/bin/env ruby
-
 require 'FileUtils'
 #deletes all existing files in the public directory
 FileUtils.rm_rf Dir.glob('public/*')
@@ -14,16 +12,20 @@ FileUtils.cp_r 'img', 'public'
 
 header = File.read('partials/header.html')
 #This content variable needs to store information relevant to files as the loop iterates... not sure how to do this
-content = File.read('content/index.html')
+#content = File.read('content/index.html')
 footer = File.read('partials/footer.html')
 
-wholepage = header + content + footer
+wholepage = header + footer
 
-basename = File.basename('content/*.html')
 
-Dir.foreach('content') do |basename|
+basename = File.basename('content')
 
-  #Should create a new file with the basename of each file in the contents folder...  not a file called 'basename'... but doesn't work 
-  File.open('public/basename', 'w') {|f| f.write(wholepage) }
+
+Dir.foreach('content') do
+
+  generated_filename = 'public/' + basename
+  article_filename = 'content/' + basename
+	
+  File.open("#{generated_filename}", 'w') {|f| f.write(wholepage) }
 
 end
