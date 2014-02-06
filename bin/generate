@@ -15,27 +15,17 @@ header = File.read('partials/header.html')
 #content = File.read('content/index.html')
 footer = File.read('partials/footer.html')
 
-wholepage = header + footer
 
 
-
-content = ('content')
-
-Dir.foreach(content) do |iterate|
-  #Is returning index.htmlcontent as opposed to just index.html
-  basename = iterate + File.basename(content) 
-  puts basename
-  generated_filename = 'public/' + basename
-  #article_filename can't find the file because the file is being found as content/index.htmlcontent
+Dir['content/*'].each do |path|
+  basename = File.basename(path) 
   article_filename = 'content/' + basename
-  puts article_filename
-  #planning to use the next two lines to write the original content to the html files generated in /public... after the filename problem is fixed!
-  #whole_content = File.read(article_filename)
-  #wholepage = header + whole_content + footer
+  generated_filename = 'public/' + basename
+
+  whole_content = File.read(article_filename)
+  whole_page = header + whole_content + footer
 	
- File.open("#{generated_filename}", 'w') {|f| f.write(wholepage) }
+ File.open("#{generated_filename}", 'w') {|f| f.write(whole_page) }
 
 end
 
-
-#to generate the content for the file, you'll need to set wholecontent inside the iteration, reading the content of article_filename to do so.
