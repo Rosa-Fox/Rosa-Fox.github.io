@@ -25,7 +25,7 @@ Dir['content/*'].each do |path|
   whole_content = File.read(article_filename)
   whole_page = header + whole_content + footer
 	
-File.open("#{generated_filename}", 'w') {|f| f.write(whole_page) }
+  File.open("#{generated_filename}", 'w') {|f| f.write(whole_page) }
 
 end
 
