@@ -10,10 +10,6 @@ FileUtils.cp 'style.css', 'public/style.css'
 #Copy the img directory into the public directory
 FileUtils.cp_r 'img', 'public' 
 
-header = File.read('partials/header.html')
-#This content variable needs to store information relevant to files as the loop iterates... not sure how to do this
-#content = File.read('content/index.html')
-footer = File.read('partials/footer.html')
 
 
 
@@ -22,10 +18,15 @@ Dir['content/*'].each do |path|
   article_filename = 'content/' + basename
   generated_filename = 'public/' + basename
 
-  whole_content = File.read(article_filename)
-  whole_page = header + whole_content + footer
+  
+  article_content = File.read(article_filename)
+
+  require 'tilt'
+  template = Tilt.new('views/layout.erb')
+  generate_content = template.render { article_content }
+  
 	
-  File.open("#{generated_filename}", 'w') {|f| f.write(whole_page) }
+  File.open("#{generated_filename}", 'w') {|f| f.write(generate_content) }
 
 end
 
