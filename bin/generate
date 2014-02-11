@@ -1,6 +1,7 @@
 #! /usr/bin/env ruby
 
 require 'FileUtils'
+require 'tilt'
 #deletes all existing files in the public directory
 FileUtils.rm_rf Dir.glob('public/*')
 
@@ -20,8 +21,6 @@ Dir['content/*'].each do |path|
 
   
   article_content = File.read(article_filename)
-
-  require 'tilt'
   template = Tilt.new('views/layout.erb')
   generate_content = template.render { article_content }
   
