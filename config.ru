@@ -7,6 +7,7 @@ class MyApp
 
     article_filename = "content/index.html"
     template = Tilt.new('views/layout.erb')
+    article_content = File.read(article_filename)
     generate_content = template.render { article_content }
 
     if env['REQUEST_PATH'] == '/'
