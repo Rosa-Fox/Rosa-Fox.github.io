@@ -15,6 +15,7 @@ class MyApp
   def article_exists?(request_path)
     File.exists?("content" + request_path)
   end
+  
   #call using if article_exists?(env['REQUEST_PATH'])
 
   def call(env)
@@ -27,6 +28,10 @@ class MyApp
 
     elsif env['REQUEST_PATH'] == '/style.css'    
     [200, {'Content-Type' => 'text/css'}, [File.read('style.css')]] 
+
+    else
+    [404, {}, ["Not Found"]]   
+
     end
   end
 end
