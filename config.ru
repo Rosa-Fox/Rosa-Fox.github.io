@@ -23,7 +23,7 @@ class MyApp
 	  [200, {'Content-Type' => 'text/html'}, [render('/index.html')]]
 
     elsif article_exists?(env['REQUEST_PATH'])
-	  [200, {'Content-Type' => 'text/html'}, [render(env['REQUEST_PATH'])]
+	  [200, {'Content-Type' => 'text/html'}, [render(env['REQUEST_PATH'])]]
     end
   end
 end
