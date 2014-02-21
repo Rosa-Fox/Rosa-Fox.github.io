@@ -24,6 +24,9 @@ class MyApp
 
     elsif article_exists?(env['REQUEST_PATH'])
 	  [200, {'Content-Type' => 'text/html'}, [render(env['REQUEST_PATH'])]]
+
+    elsif env['REQUEST_PATH'] == '/style.css'    
+    [200, {'Content-Type' => 'text/css'}, [File.read('style.css')]] 
     end
   end
 end
