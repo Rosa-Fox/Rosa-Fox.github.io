@@ -15,6 +15,10 @@ class MyApp
   end
   # call using if article_exists?(env['REQUEST_PATH'])
 
+  def img_exists?(imgpath)
+    File.exists?('img' + imgpath)
+  end
+
   def call(env)
     if env['REQUEST_PATH'] == '/'
       [200, { 'Content-Type' => 'text/html' }, [render('/index.html')]]
@@ -24,6 +28,9 @@ class MyApp
 
     elsif env['REQUEST_PATH'] == '/style.css'
       [200, { 'Content-Type' => 'text/css' }, [File.read('style.css')]]
+
+    elsif img_exists?(env['REQUEST_PATH'])
+      [200, { 'Content-Type' => 'img/jpeg' }, [render(env['REQUEST_PATH'])]]
 
     else
       [404, {}, ['Not Found']]
