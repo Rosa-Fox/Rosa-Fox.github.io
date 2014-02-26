@@ -1,18 +1,24 @@
 # myapp.rb
 require 'sinatra'
 
-#Bring back the article exists method and pass if the requested article doesn't exist 
-#Needs 2 get calls to register routes
-#Start with just / to register the index 
-#Use built in ERB method to render
-#Pass the content of the file you want to render to erb method will magically render
-
 article_filename = 'content' + '/index.html'
 article_content = File.read(article_filename)
-
 
 get '/' do
   erb article_content
 end
 
+def article_exists?(request_path)
+  exists_filename = 'content' + request_path
+  exists_content = File.read(exists_filename)
+  File.exists?('content' + request_path)
+  get 'request_path' do
+    erb exists_content
+  end
+end
 
+def call(env)
+  if article_exists?(env['REQUEST_PATH'])
+    [[article_exists?(env['REQUEST_PATH'])]]
+  end
+end
