@@ -21,3 +21,8 @@ get '/:page' do
   exists_content = File.read(exists_filename)
   erb exists_content
 end
+
+post '/contact.html' do
+  params[:email]
+  params[:message]
+end
