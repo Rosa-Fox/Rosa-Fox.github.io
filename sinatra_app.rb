@@ -1,5 +1,19 @@
 # myapp.rb
 require 'sinatra'
+require 'mail'
+
+Mail.defaults do
+  delivery_method :smtp, {
+    :address => 'smtp.gmail.com',
+    :port => '587',
+    :domain => 'http://vast-wildwood-6547.herokuapp.com/',
+    :user_name => 'app22568285@heroku.com',
+    :password => 'k9d9ncua',
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+end
+
 def article_exists?(request_path)
   File.exists? local_path(request_path)
 end
@@ -22,6 +36,17 @@ get '/:page' do
   erb exists_content
 end
 
-post '/contact.html' do
-  "#{params[:email]}<br>#{params[:message]}"
+#post '/contact.html' do
+  #{}"#{params[:email]}<br>#{params[:message]}"
+#end
+
+#Send an email
+post '/contact.html'do
+  mail = Mail.new.tap do |m|
+    m.to = 'rosafox89@gmail.com'
+    m.from = "#{params[:email]}"
+    m.subject = 'You been contacted'
+    m.body = "#{params[:message]}"
+  end
+mail.deliver  
 end
