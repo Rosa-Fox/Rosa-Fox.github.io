@@ -23,6 +23,5 @@ get '/:page' do
 end
 
 post '/contact.html' do
-  params[:email]
-  params[:message]
+  "#{params[:email]}<br>#{params[:message]}"
 end
