@@ -1,5 +1,6 @@
 # myapp.rb
 require 'sinatra'
+require "bundler/setup"
 require 'mail'
 
 Mail.defaults do
