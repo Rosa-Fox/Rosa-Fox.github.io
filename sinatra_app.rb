@@ -1,6 +1,6 @@
 # myapp.rb
 require 'sinatra'
-require "bundler/setup"
+require 'bundler/setup'
 require 'mail'
 
 Mail.defaults do
@@ -8,8 +8,8 @@ Mail.defaults do
     :address => 'smtp.gmail.com',
     :port => '587',
     :domain => 'http://vast-wildwood-6547.herokuapp.com/',
-    :user_name => 'app22568285@heroku.com',
-    :password => 'k9d9ncua',
+    :user_name => ENV['app22568285@heroku.com'],
+    :password => ENV['k9d9ncua'],
     :authentication => :plain,
     :enable_starttls_auto => true
   }
@@ -42,7 +42,7 @@ end
 #end
 
 #Send an email
-post '/contact.html'do
+post '/contact.html' do
   mail = Mail.new.tap do |m|
     m.to = 'rosafox89@gmail.com'
     m.from = "#{params[:email]}"
