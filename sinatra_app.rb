@@ -5,12 +5,11 @@ require 'mail'
 
 Mail.defaults do
   delivery_method :smtp, {
-    :address => 'smtp.gmail.com',
+    :address => 'smtp.sendgrid.net', #smtp.gmail.com 'smtp.sendgrid.net'
     :port => '587',
-    :domain => 'http://vast-wildwood-6547.herokuapp.com/',
-    :user_name => ENV['app22568285@heroku.com'],
-    :password => ENV['k9d9ncua'],
-    :authentication => :plain,
+    :domain => 'heroku.com',
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
     :enable_starttls_auto => true
   }
 end
