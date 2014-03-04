@@ -4,14 +4,13 @@ require 'bundler/setup'
 require 'mail'
 
 Mail.defaults do
-  delivery_method :smtp, {
-    :address => 'smtp.sendgrid.net', #smtp.gmail.com 'smtp.sendgrid.net'
-    :port => '587',
-    :domain => 'heroku.com',
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password => ENV['SENDGRID_PASSWORD'],
-    :enable_starttls_auto => true
-  }
+  delivery_method :smtp,
+    address: 'smtp.sendgrid.net',
+    port: '587',
+    domain: 'heroku.com',
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
+    enable_starttls_auto: true
 end
 
 def article_exists?(request_path)
@@ -36,11 +35,7 @@ get '/:page' do
   erb exists_content
 end
 
-#post '/contact.html' do
-  #{}"#{params[:email]}<br>#{params[:message]}"
-#end
-
-#Send an email
+# Send an email
 post '/contact.html' do
   mail = Mail.new.tap do |m|
     m.to = 'rosafox89@gmail.com'
@@ -48,5 +43,5 @@ post '/contact.html' do
     m.subject = 'You been contacted'
     m.body = "#{params[:message]}"
   end
-mail.deliver  
+  mail.deliver
 end
